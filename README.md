@@ -1,4 +1,4 @@
-# ChatX - Modern Chat Interface
+# AskX - Modern Chat Interface
 
 A beautiful and functional chat interface with a dark theme, built with HTML, CSS, and JavaScript.
 

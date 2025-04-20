@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const label = document.createElement('div');
                 label.classList.add('message-label');
-                label.textContent = message.isUser ? 'You' : 'ChatX';
+                label.textContent = message.isUser ? 'You' : 'AskX';
 
                 const container = document.createElement('div');
                 container.classList.add('message-container');
@@ -490,7 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const label = document.createElement('div');
         label.classList.add('message-label');
-        label.textContent = isUser ? 'You' : 'ChatX';
+        label.textContent = isUser ? 'You' : 'AskX';
 
         const container = document.createElement('div');
         container.classList.add('message-container');
@@ -583,7 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const userMessageDiv = document.createElement('div');
         userMessageDiv.className = 'message user-message';
         userMessageDiv.innerHTML = `
-            <div class="message-label">You</div>
+            <div class="message-label">AskX</div>
             <div class="message-content">${message}</div>
         `;
         chatMessages.appendChild(userMessageDiv);
@@ -598,7 +598,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const botMessageDiv = document.createElement('div');
         botMessageDiv.className = 'message bot-message';
         botMessageDiv.innerHTML = `
-            <div class="message-label">ChatX</div>
+            <div class="message-label">AskX</div>
             <div class="message-content"></div>
         `;
         chatMessages.appendChild(botMessageDiv);
