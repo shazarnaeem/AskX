@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatX - Your AI Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .model-status {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+            padding: 8px;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            min-width: 200px;
+        }
+
+        .status-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #666;
+        }
+
+        .status-dot.ready {
+            background-color: #4CAF50;
+        }
+
+        .status-dot.error {
+            background-color: #f44336;
+        }
+
+        .status-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .dark-theme .model-status {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .dark-theme .status-text {
+            color: #fff;
+        }
+
+        .retry-button {
+            margin-top: 8px;
+            padding: 4px 8px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .retry-button:hover {
+            background-color: #45a049;
+        }
+
+        .dark-theme .retry-button {
+            background-color: #2E7D32;
+        }
+
+        .dark-theme .retry-button:hover {
+            background-color: #1B5E20;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <button id="new-chat" class="new-chat-btn">
+                    <i class="fas fa-plus"></i> New Chat
+                </button>
+            </div>
+            <div class="chat-history" id="chat-history">
+                <!-- Previous chats will be added here -->
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h1>ChatX</h1>
+                    <div class="header-controls">
+                        <div class="model-status" id="model-status">
+                            <div class="status-line">
+                                <span class="status-dot ready"></span>
+                                <span class="status-text">Ready to Chat</span>
+                            </div>
+                            <button class="retry-button" style="display: none;">Retry Loading</button>
+                        </div>
+                        <label class="theme-toggle">
+                            <input type="checkbox" id="theme-switch">
+                            <span class="theme-slider"></span>
+                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-moon"></i>
+                        </label>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Messages will be added here dynamically -->
+                </div>
+                <div class="chat-input-container">
+                    <textarea id="user-input" placeholder="Type your message here..." rows="1"></textarea>
+                    <button id="send-button">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="typing-indicator" id="typing-indicator">
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="model.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html> 
