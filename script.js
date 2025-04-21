@@ -501,7 +501,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const chatMessages = document.getElementById('chat-messages');
         chatMessages.appendChild(container);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Scroll to the new message with smooth behavior
+        setTimeout(() => {
+            chatMessages.scrollTo({
+                top: chatMessages.scrollHeight,
+                behavior: 'smooth'
+            });
+        }, 100);
 
         // Save message to current chat
         if (currentChatId) {
@@ -697,5 +704,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.innerWidth > 768) {
             sidebar.classList.remove('active');
         }
+    });
+
+    // Handle input focus on mobile
+    document.getElementById('user-input').addEventListener('focus', () => {
+        if (window.innerWidth <= 768) {
+            setTimeout(() => {
+                const chatMessages = document.getElementById('chat-messages');
+                chatMessages.scrollTo({
+                    top: chatMessages.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }, 300);
+        }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        const chatMessages = document.getElementById('chat-messages');
+        chatMessages.scrollTo({
+            top: chatMessages.scrollHeight,
+            behavior: 'auto'
+        });
     });
 }); 

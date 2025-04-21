@@ -47,6 +47,7 @@ body {
 .app-container {
     display: flex;
     height: 100vh;
+    position: relative;
 }
 
 .sidebar {
@@ -134,14 +135,10 @@ body {
 }
 
 .chat-container {
-    width: 100%;
-    max-width: 800px;
-    height: 100%;
-    background-color: var(--secondary-color);
-    border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    height: 100%;
+    position: relative;
 }
 
 .chat-header {
@@ -226,9 +223,8 @@ input:checked + .theme-slider:before {
     flex: 1;
     overflow-y: auto;
     padding: var(--spacing);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    padding-bottom: 80px; /* Add padding to account for fixed input */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .message {
@@ -375,12 +371,17 @@ input:checked + .theme-slider:before {
 }
 
 .chat-input-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     padding: var(--spacing);
-    display: flex;
-    gap: var(--spacing);
-    background-color: var(--input-bg);
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    background-color: var(--background-color);
     border-top: 1px solid var(--border-color);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing);
 }
 
 #user-input {
@@ -473,12 +474,30 @@ input:checked + .theme-slider:before {
         font-size: 1.5rem;
     }
 
+    .chat-messages {
+        padding-bottom: 100px; /* Increased padding for mobile */
+    }
+
     .chat-input-container {
-        padding: 10px;
+        padding: 12px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--background-color);
+        border-top: 1px solid var(--border-color);
     }
 
     #user-input {
-        font-size: 16px; /* Prevents zoom on iOS */
+        font-size: 16px;
+        padding: 12px;
+        max-height: 120px;
+        overflow-y: auto;
+    }
+
+    #send-button {
+        padding: 12px;
+        min-width: 44px; /* Minimum touch target size */
     }
 
     .message {
@@ -861,4 +880,29 @@ input:checked + .theme-slider:before {
 
 .chat-menu-option.like {
     color: #ffbb33;
+}
+
+/* Prevent keyboard from pushing content up on mobile */
+@media (max-width: 768px) {
+    .chat-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Ensure input stays visible when keyboard is open */
+    .chat-input-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--background-color);
+        padding: env(safe-area-inset-bottom) var(--spacing) var(--spacing);
+    }
 } 
