@@ -1018,4 +1018,55 @@ input:checked + .theme-slider:before {
         background-color: var(--background-color);
         padding: env(safe-area-inset-bottom) var(--spacing) var(--spacing);
     }
+}
+
+/* Custom styles */
+#messages {
+    scrollbar-width: thin;
+    scrollbar-color: #4a5568 #2d3748;
+}
+
+#messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+#messages::-webkit-scrollbar-track {
+    background: #2d3748;
+}
+
+#messages::-webkit-scrollbar-thumb {
+    background-color: #4a5568;
+    border-radius: 4px;
+}
+
+#chatList {
+    scrollbar-width: thin;
+    scrollbar-color: #4a5568 #1a202c;
+}
+
+#chatList::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chatList::-webkit-scrollbar-track {
+    background: #1a202c;
+}
+
+#chatList::-webkit-scrollbar-thumb {
+    background-color: #4a5568;
+    border-radius: 4px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .w-64 {
+        position: fixed;
+        left: -100%;
+        transition: left 0.3s ease-in-out;
+        z-index: 50;
+    }
+
+    .w-64.open {
+        left: 0;
+    }
 } 
