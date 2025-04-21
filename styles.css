@@ -135,7 +135,7 @@ body {
     flex-direction: column;
     width: 100%;
     max-width: 100%;
-    padding: 0;
+    padding: var(--spacing);
 }
 
 .chat-container {
@@ -145,16 +145,18 @@ body {
     position: relative;
     width: 100%;
     max-width: 100%;
-    background-color: var(--background-color);
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .chat-header {
     padding: var(--spacing);
-    background-color: var(--background-color);
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .chat-header h1 {
@@ -379,18 +381,13 @@ input:checked + .theme-slider:before {
 }
 
 .chat-input-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
     padding: var(--spacing);
-    background-color: var(--background-color);
+    background-color: var(--input-bg);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
     border-top: 1px solid var(--border-color);
-    z-index: 100;
     display: flex;
     align-items: center;
     gap: var(--spacing);
-    width: 100%;
 }
 
 #user-input {
@@ -404,7 +401,6 @@ input:checked + .theme-slider:before {
     resize: none;
     max-height: 120px;
     overflow-y: auto;
-    width: 100%;
 }
 
 #send-button {
@@ -475,7 +471,7 @@ input:checked + .theme-slider:before {
     .main-content {
         width: 100%;
         margin-left: 0;
-        padding: 0;
+        padding: var(--spacing);
     }
 
     .chat-container {
@@ -483,54 +479,36 @@ input:checked + .theme-slider:before {
         max-width: 100%;
     }
 
-    .chat-header {
-        padding: 10px;
-    }
-
-    .chat-header h1 {
-        font-size: 1.5rem;
-    }
-
     .chat-messages {
         padding: 12px;
-        padding-bottom: 100px;
+        padding-bottom: 80px;
     }
 
     .message {
-        max-width: 100%;
+        max-width: 85%;
         padding: 10px 12px;
     }
 
     .user-message {
         margin-left: auto;
-        max-width: 85%;
     }
 
     .bot-message {
         margin-right: auto;
-        max-width: 85%;
     }
 
     .chat-input-container {
         padding: 12px;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: var(--background-color);
-        border-top: 1px solid var(--border-color);
     }
 
     #user-input {
         font-size: 16px;
         padding: 12px;
-        max-height: 120px;
-        overflow-y: auto;
     }
 
     #send-button {
         padding: 12px;
-        min-width: 44px; /* Minimum touch target size */
+        min-width: 44px;
     }
 
     .header-controls {
