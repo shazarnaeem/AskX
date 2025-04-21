@@ -90,16 +90,20 @@ const ChatInterface: React.FC = () => {
 
   return (
     <div className="flex h-screen bg-gray-100">
-      <Sidebar
-        chats={chats}
-        selectedChatId={selectedChatId}
-        onSelectChat={handleSelectChat}
-        onNewChat={handleNewChat}
-        onDeleteChat={handleDeleteChat}
-        isSidebarOpen={isSidebarOpen}
-        setIsSidebarOpen={setIsSidebarOpen}
-      />
+      {/* Left Sidebar */}
+      <div className="w-64 bg-gray-900 text-white">
+        <Sidebar
+          chats={chats}
+          selectedChatId={selectedChatId}
+          onSelectChat={handleSelectChat}
+          onNewChat={handleNewChat}
+          onDeleteChat={handleDeleteChat}
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+        />
+      </div>
       
+      {/* Right Chat Area */}
       <div className="flex-1 flex flex-col">
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {messages.map((message) => (
